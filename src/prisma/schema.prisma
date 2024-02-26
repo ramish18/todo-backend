@@ -1,0 +1,21 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Todo {
+  id        Int      @id @default(autoincrement())
+  title     String
+  completed Boolean  @default(false)
+}
+
+
+model ApiCallCount {
+  id    Int    @id @default(autoincrement())
+  type  String @unique
+  count Int    @default(0)
+}
